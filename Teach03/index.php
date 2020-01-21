@@ -32,6 +32,7 @@
                     <input type="radio" name="major" id="cit" value="Computer information Technology">
                     <label for="computer-engineering">Computer Engineering</label> 
                     <input type="radio" name="major" id="computer-engineering" value="Computer Engineering">
+                    <br>
                     <label for="comments">Comments:</label>  
                     <input type="textarea" name="comments" id="comments">
                 </fieldset>
@@ -55,11 +56,12 @@
                     <input type="checkbox" name="continent" id="antarctica" value="Antarctica">
                 </fieldset>
 
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit" id="submitButton">
             </form>
             <?php 
-                echo $_POST["name"]; 
+                echo $_POST["name"] + "<br>";
                 echo $_POST["email"];
+                echo "<br>";
                 echo $_POST["major"];
                 echo $_POST["comments"];
                 foreach($_POST["continent"] as $value) {
