@@ -59,15 +59,15 @@
                 <input type="submit" value="Submit" id="submitButton">
             </form>
             <?php 
-                echo $_POST["name"];
-                echo "<br>";
+                echo "$_POST["name"] <br>";
+                
                 echo $_POST["email"];
                 echo "<br>";
                 echo $_POST["major"];
                 echo "<br>";
                 echo $_POST["comments"];
                 echo "<br>";
-                foreach($_POST['checkbox'] as $value) {
+                foreach($_POST['continent'] as $value) {
                     echo $value;
                     echo "<br>";
                 }
