@@ -67,10 +67,13 @@
                 echo "<br>";
                 echo $_POST["comments"];
                 echo "<br>";
-                foreach($_POST["continent[]"] as $value) {
-                    echo "$value";
+                foreach($_POST['checkbox'] as $value) {
+                    echo $value;
                     echo "<br>";
                 }
+
+                echo 'another test method';
+                print_r($_POST);
 
             
             
