@@ -70,10 +70,11 @@
                 foreach($_POST["continent"] as $value) {
                     echo $value;
                     echo "<br>";
-                }
+                }           
             
             
                 
+
             ?>
         </main>
         <footer>
