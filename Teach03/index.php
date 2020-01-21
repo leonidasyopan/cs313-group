@@ -54,6 +54,8 @@
                     <label for="antarctica">Antarctica</label>
                     <input type="checkbox" name="antarctica" id="antarctica" value="Antarctica">
                 </fieldset>
+
+                <input type="submit" value="Submit">
             </form>
             <?php echo $_POST["name"]; ?>
         </main>
