@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -53,6 +55,7 @@
                     <input type="checkbox" name="antarctica" id="antarctica" value="Antarctica">
                 </fieldset>
             </form>
+            <?php echo $_POST["name"]; ?>
         </main>
         <footer>
         </footer>
