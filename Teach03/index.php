@@ -34,7 +34,7 @@
                     <input type="radio" name="major" id="computer-engineering" value="Computer Engineering">
                     <br>
                     <label for="comments">Comments:</label>  
-                    <input type="textarea" name="comments" id="comments">
+                    <input type="textarea" name="comments" id="comments" rows="6" cols="40">
                 </fieldset>
 
                 <!-- continents -->
@@ -59,13 +59,17 @@
                 <input type="submit" value="Submit" id="submitButton">
             </form>
             <?php 
-                echo $_POST["name"] + "<br>";
+                echo $_POST["name"];
+                echo "<br>";
                 echo $_POST["email"];
                 echo "<br>";
                 echo $_POST["major"];
+                echo "<br>";
                 echo $_POST["comments"];
+                echo "<br>";
                 foreach($_POST["continent"] as $value) {
                     echo "$value";
+                    echo "<br>";
                 }
 
             
