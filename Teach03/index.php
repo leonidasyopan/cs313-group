@@ -32,7 +32,7 @@
                     <input type="radio" name="major" id="computer-engineering" value="Computer Engineering">
                     <label for="comments">Comments:</label>  
                     <input type="textarea" name="comments" id="comments">
-                <fieldset>
+                </fieldset>
 
                 <!-- continents -->
                 <fieldset>
