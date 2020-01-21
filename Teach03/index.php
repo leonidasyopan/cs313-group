@@ -59,8 +59,8 @@
                 <input type="submit" value="Submit" id="submitButton">
             </form>
             <?php 
-                echo "$_POST["name"] <br>";
-                
+                echo $_POST["name"];
+                echo "<br>";
                 echo $_POST["email"];
                 echo "<br>";
                 echo $_POST["major"];
