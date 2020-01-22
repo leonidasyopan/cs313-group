@@ -12,7 +12,7 @@
 
         <main>
             <h1> CS313 Group 04 - Teach 03</h1>
-            <form method="post" action="index.php">
+            <form method="post" action="/cs313-group/teach03/index.php">
                 <fieldset>
                     <legend>Personal Information:</legend>
                     <label for="name">Name:</label> 
@@ -58,6 +58,7 @@
 
                 <input type="submit" value="Submit" id="submitButton">
             </form>
+            
             <?php 
                 echo $_POST["name"];
                 echo "<br>";
