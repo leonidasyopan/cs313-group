@@ -74,3 +74,17 @@ INSERT INTO note VALUES
     (NEXTVAL('note_sequence'), '1002', '1001', '1003', 'President Nelson said something cool about something nice'),
     (NEXTVAL('note_sequence'), '1003', '1002', '1001', 'Elder Oaks said something cool about something nice'),
     (NEXTVAL('note_sequence'), '1003', '1003', '1002', 'Elder Bednar said something cool about something nice');
+
+/* JOIN TABLES */
+
+SELECT
+    u.username,
+    s.speaker_name,
+    c.conference_session,
+    n.note_text
+FROM
+    note n
+INNER JOIN user_table u ON u.user_id = n.user_id
+INNER JOIN speaker s ON s.speaker_id = n.speaker_id
+INNER JOIN conference c ON c.conference_id = n.conference_id
+;
