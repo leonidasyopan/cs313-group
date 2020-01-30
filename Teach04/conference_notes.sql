@@ -11,7 +11,7 @@ DROP SEQUENCE IF EXISTS conference_sequence;
 
 CREATE TABLE user_table (
     user_id     INTEGER         CONSTRAINT user_table_pk PRIMARY KEY      NOT NULL,
-    username    VARCHAR(30)                                         NOT NULL,
+    username    VARCHAR(30)                                               NOT NULL UNIQUE,
     first_name  VARCHAR(30),
     last_name   VARCHAR(30)
 );
