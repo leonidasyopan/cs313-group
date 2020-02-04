@@ -33,6 +33,14 @@ catch (PDOException $ex)
 </head>
 <body>
     <h1>Scripture Resource</h1>
+
+        <form>
+            <?php
+            foreach ($db->query('SELECT book FROM scriptures') as $book) {                
+                echo '<input type="radio" name="book" value="'. $book . '" >' . $book . '</br>';
+            }
+            ?>
+        </form>
         
         <?php
         foreach ($db->query('SELECT * FROM scriptures') as $row ) {
@@ -45,4 +53,3 @@ catch (PDOException $ex)
         
 </body>
 </html>
-
