@@ -47,7 +47,9 @@ catch (PDOException $ex)
         <?php
         if (isset($_POST['book'])) {
             echo '<p> In If Statement</p>';
-            foreach ($db->query('SELECT * FROM scriptures WHERE book =' . $_POST['book']) as $row ) {
+            $string = 'SELECT * FROM scriptures WHERE book = ' . $_POST['book'];
+            echo $string;
+            foreach ($db->query('SELECT * FROM scriptures WHERE book = "' . $_POST['book'] . '"') as $row ) {
                 echo '<p><strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'];
                 echo '</strong>';
                 echo  ' - ' . '"' . $row['content'] . '"';
