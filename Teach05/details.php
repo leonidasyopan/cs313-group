@@ -46,6 +46,8 @@ catch (PDOException $ex)
 <body>
 
     <?php
+        //$db->query("SELECT * FROM 'scriptures' WHERE 'id' = '$i'") as $row
+
         $db->query('SELECT * FROM scriptures WHERE id = ' . $i . "'") as $row
 
         echo '<p><strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'];
