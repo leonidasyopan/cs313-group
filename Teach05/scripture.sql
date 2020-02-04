@@ -1,5 +1,4 @@
 
-
 DROP TABLE  IF EXISTS sciptures;
 
 CREATE TABLE scriptures (
