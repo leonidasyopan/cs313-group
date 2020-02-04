@@ -34,20 +34,32 @@ catch (PDOException $ex)
 <body>
     <h1>Scripture Resource</h1>
 
-        <form>
+        <form action="scriptures.php" method="post">
             <?php
             foreach ($db->query('SELECT DISTINCT book FROM scriptures') as $row) {                
                 echo '<input type="radio" name="book" value="'. $row['book'] . '" >' . $row['book'] . '</br>';
             }
             ?>
+            <input type="submit">
         </form>
         
+        
         <?php
-        foreach ($db->query('SELECT * FROM scriptures') as $row ) {
-            echo '<p><strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'];
-            echo '</strong>';
-            echo  ' - ' . '"' . $row['content'] . '"';
-            echo '</p>';
+        if (isset($_POST['book'])) {
+            foreach ($db->query('SELECT * FROM scriptures WHERE book = $_POST["book"]') as $row ) {
+                echo '<p><strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'];
+                echo '</strong>';
+                echo  ' - ' . '"' . $row['content'] . '"';
+                echo '</p>';
+            }
+        }
+        else {
+            foreach ($db->query('SELECT * FROM scriptures') as $row ) {
+                echo '<p><strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'];
+                echo '</strong>';
+                echo  ' - ' . '"' . $row['content'] . '"';
+                echo '</p>';
+            }
         }
         ?>
         
