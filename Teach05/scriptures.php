@@ -36,8 +36,8 @@ catch (PDOException $ex)
 
         <form>
             <?php
-            foreach ($db->query('SELECT book FROM scriptures') as $book) {                
-                echo '<input type="radio" name="book" value="'. $book . '" >' . $book . '</br>';
+            foreach ($db->query('SELECT book FROM scriptures') as $row) {                
+                echo '<input type="radio" name="book" value="'. $row['book'] . '" >' . $book . '</br>';
             }
             ?>
         </form>
