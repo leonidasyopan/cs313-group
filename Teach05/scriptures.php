@@ -46,7 +46,7 @@ catch (PDOException $ex)
         
         <?php
         if (isset($_POST['book'])) {
-            foreach ($db->query('SELECT * FROM scriptures WHERE book = $_POST["book"]') as $row ) {
+            foreach ($db->query('SELECT * FROM scriptures WHERE book =' . $_POST['book']) as $row ) {
                 echo '<p><strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'];
                 echo '</strong>';
                 echo  ' - ' . '"' . $row['content'] . '"';
