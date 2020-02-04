@@ -1,4 +1,8 @@
 <?php
+// Start the session
+session_start();
+?>
+<?php
 
 try
 {
@@ -47,13 +51,13 @@ catch (PDOException $ex)
         <?php
         if (isset($_POST['book'])) {
             echo '<p> In If Statement</p>';
-            $string = 'SELECT * FROM scriptures WHERE book = ' . $_POST['book'];
+            $string = 'SELECT * FROM scriptures WHERE book = ' . '"' . $_POST['book'] . '"';
             echo $string;
-            foreach ($db->query('SELECT * FROM scriptures WHERE book = "' . $_POST['book'] . '"') as $row ) {
-                echo '<p><strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'];
-                echo '</strong>';
-                echo  ' - ' . '"' . $row['content'] . '"';
-                echo '</p>';
+            foreach ($db->query($string) as $row ) {
+                echo '<a href="details.php?id="' . $_POST['id'] . '"><p><strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'];
+                echo '</strong></a></p>';
+                /* echo  ' - ' . '"' . $row['content'] . '"';
+                echo '</p>'; */
             }
         }
         else {
