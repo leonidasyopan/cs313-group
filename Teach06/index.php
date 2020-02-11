@@ -78,7 +78,7 @@ catch (PDOException $ex)
                 echo '<p>' . $result . '</p>';
 
                 $newID = $db->query("SELECT max(scriptures_id) FROM scriptures;");
-                echo 'New ID: ' . $newID;
+                echo 'New ID: ' . $newID['max'];
 
 
                 

@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS scriptures;
-DROP TABLE IF EXISTS topics;
-DROP TABLE IF EXISTS lookup;
+DROP TABLE IF EXISTS scriptures CASCADE;
+DROP TABLE IF EXISTS topics CASCADE;
+DROP TABLE IF EXISTS lookup CASCADE;
 
 CREATE TABLE scriptures (
 scriptures_id       SERIAL      PRIMARY KEY  NOT NULL,
@@ -54,4 +54,4 @@ SELECT l.lookup_id
 FROM scriptures s
 INNER JOIN lookup l ON l.scriptures_id = s.scriptures_id
 INNER JOIN topics t ON t.topics_id = l.topics_id
-WHERE t.name = 'Jesus Christ, The Savior';
+WHERE t.name = 'The Savior, Mission Of';
