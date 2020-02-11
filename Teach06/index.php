@@ -77,11 +77,15 @@ catch (PDOException $ex)
 
                 echo '<p>' . $result . '</p>';
 
-                $newID = $db->query("SELECT max(scriptures_id) FROM scriptures;");
-                echo 'New ID: ' . $newID['max'];
-
-
+                $newId = $db->lastInsertId('scriptures_id_seq');
                 
+                /*
+                INSERT INTO table_name [ (column1 [, column2 ]) ]
+                SELECT [ *|column1 [, column2 ]
+                FROM table1 [, table2 ]
+                [ WHERE VALUE OPERATOR ];
+                */
+
                 for ($i = 0; $i < count($_POST['topics']); $i++) {
 
                     echo '<p>inserting ' . $_POST['topics'][$i] . '...</p>';
