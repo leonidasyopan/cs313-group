@@ -38,41 +38,23 @@ catch (PDOException $ex)
 
         <form action="scriptures.php" method="post">
             <input type="text" name="book">
+            <label for="book">Book</label>
             <input type="text" name="chapter">
+            <label for="chapter">Chapter</label>
             <input type="text" name="verse">
+            <label for="verse">Verse</label>
             <input type="textarea" name="content">
+            <label for="content">Content</label>
+            <br>
             
             <?php
-            foreach ($db->query('SELECT DISTINCT book FROM scriptures') as $row) {                
-                echo '<input type="radio" name="book" value="'. $row['book'] . '" >' . $row['book'] . '</br>';
+            foreach ($db->query('SELECT DISTINCT name FROM topics') as $row) {                
+                echo '<input type="checkbox" name="topics[]" value="'. $row['name'] . '" >' . $row['name'] . '</br>';
             }
             ?>
             <input type="submit">
         </form>
         
-        
-        <?php
-        if (isset($_POST['book'])) {
-            echo '<p> In If Statement</p>';
-            $string = 'SELECT * FROM scriptures WHERE book = ' . '"' . $_POST['book'] . '"';
-            echo $string;
-            foreach ($db->query($string) as $row ) {
-                echo '<a href="details.php?id="' . $_POST['id'] . '"><p><strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'];
-                echo '</strong></a></p>';
-                /* echo  ' - ' . '"' . $row['content'] . '"';
-                echo '</p>'; */
-            }
-        }
-        else {
-            echo '<p> In Else Statement</p>';
-            foreach ($db->query('SELECT * FROM scriptures') as $row ) {
-                echo '<p><strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'];
-                echo '</strong>';
-                echo  ' - ' . '"' . $row['content'] . '"';
-                echo '</p>';
-            }
-        }
-        ?>
         
 </body>
 </html>
