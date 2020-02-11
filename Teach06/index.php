@@ -67,7 +67,7 @@ catch (PDOException $ex)
                 
                 echo '<pre>'; print_r($_POST['topics']); echo '</pre>';
                 
-                $stmt = $db->prepare("INSERT INTO scriptures (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content");
+                $stmt = $db->prepare("INSERT INTO scriptures (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content);");
                 $stmt->bindValue(':book', $book, PDO::PARAM_STR);
                 $stmt->bindValue(':chapter', $chapter, PDO::PARAM_STR);
                 $stmt->bindValue(':verse', $verse, PDO::PARAM_STR);
