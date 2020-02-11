@@ -54,10 +54,16 @@ catch (PDOException $ex)
         <?php
             if (isset($_POST)) {
 
+                echo '<p>post is set!</p>';
+
                 $book = htmlspecialchars($_POST[book]);
+                echo '<p>Book: ' . $book . '</p>';
                 $chapter = htmlspecialchars($_POST[chapter]);
+                echo '<p>Chapter: ' . $chapter . '</p>';
                 $verse = htmlspecialchars($_POST[verse]);
-                $content = htmlspecialchars($_POST[content]);                
+                echo '<p>Verse: ' . $verse . '</p>';
+                $content = htmlspecialchars($_POST[content]);
+                echo '<p>Content: ' . $content . '</p>';                
                 
                 $stmt = $db->prepare("INSERT INTO scriptures (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content");
                 
