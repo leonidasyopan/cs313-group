@@ -68,9 +68,12 @@ catch (PDOException $ex)
                 echo '<pre>'; print_r($_POST['topics']); echo '</pre>';
                 
                 $stmt = $db->prepare("INSERT INTO scriptures (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content");
+                $stmt->bindValue(':book', $book, PDO::PARAM_STR);
+                $stmt->bindValue(':chapter', $chapter, PDO::PARAM_STR);
+                $stmt->bindValue(':verse', $verse, PDO::PARAM_STR);
+                $stmt->bindValue(':content', $content, PDO::PARAM_STR);
                 
-                $stmt->execute(array(':book' => $book, ':chapter' => $chapter, ':verse' => $verse, ':content' => $content));
-                $result = $stmt->fetchAll();
+                $stmt->execute();
 
                 echo '<p>' . $result . '</p>';
 
@@ -82,7 +85,7 @@ catch (PDOException $ex)
 
                     echo 'inserting' . $_POST['topics'][$i] . '...';
                     $stmt = $db->prepare ("INSERT INTO lookup (scriptures_id, topics_id) VALUES (:scriptures_id, :topics_id)");
-
+                    $stmt->bindValue("lookup", $scriptures_id, $topics_id);
                     $stmt->execute(array('scriptures_id' => $newID, 'topics_id' => $_POST['topics'][$i]));
                 }
 
