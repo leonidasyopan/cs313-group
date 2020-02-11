@@ -73,6 +73,7 @@ catch (PDOException $ex)
                 if (isset($_POST['newTopic'])) {
                     echo '<p> In If Statement </p>';
                     $newTopic = htmlspecialchars($_POST['topic']);
+                    echo '<p>New Topic: ' . $newTopic . '</p>';
                     $stmt = $db->prepare("INSERT INTO topics (name) VALUES (:name);");
                     $stmt->bindValue(':name', $newTopic, PDO::PARAM_STR);
                     $stmt->execute();
