@@ -45,7 +45,7 @@ catch (PDOException $ex)
             <?php
 
             foreach ($db->query('SELECT DISTINCT * FROM topics') as $row) {                
-                echo '<input type="checkbox" name="topics[]" value="'. $row['topics_id'] . '" >' . $row['name'] . '</br>';
+                echo '<input type="checkbox" name="topics[]" value="'. $row['topics_id'] . '" >' . $row['name'] . ' - ' . $row['id'] . '</br>';
             }
             ?>
             <input type="submit">
@@ -69,7 +69,8 @@ catch (PDOException $ex)
                 
                 $stmt = $db->prepare("INSERT INTO scriptures (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content");
                 
-                $stmt->execute(array('book' => $book, 'chapter' => $chapter, 'verse' => $verse, 'content' => $content));
+                $stmt->execute(array(':book' => $book, ':chapter' => $chapter, ':verse' => $verse, ':content' => $content));
+                $result = $stmt->fetchAll();
 
                 $newID = $db->query("SELECT max(scriptures_id) FROM scriptures");
 
