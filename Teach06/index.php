@@ -78,12 +78,13 @@ catch (PDOException $ex)
                 echo '<p>' . $result . '</p>';
 
                 $newID = $db->query("SELECT max(scriptures_id) FROM scriptures");
+                echo 'New ID: ' . $newID;
 
 
                 
                 for ($i = 0; $i < count($_POST['topics']); $i++) {
 
-                    echo 'inserting ' . $_POST['topics'][$i] . '...';
+                    echo '<p>inserting ' . $_POST['topics'][$i] . '...</p>';
                     $stmt = $db->prepare("INSERT INTO lookup (scriptures_id, topics_id) VALUES (:scriptures_id, :topics_id);");
                     $stmt->bindValue(':scriptures_id', $newID, PDO::PARAM_INT);
                     $stmt->bindValue(':topics_id', $_POST['topics'][$i], PDO::PARAM_INT);
