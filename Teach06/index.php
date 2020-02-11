@@ -48,10 +48,13 @@ catch (PDOException $ex)
                 echo '<input type="checkbox" name="topics[]" value="'. $row['topics_id'] . '" >' . $row['name'] . ' - ' . $row['id'] . '</br>';
             }
             ?>
+            <input type="checkbox" name="newTopic" value="1"> <input type="text" name="topic" id="topic" placeholder="other"><br>
             <input type="submit">
         </form>
         
-    
+        <!-- if (isset($_POST['checkbox'])) {
+            // checkbox has been checked
+            } -->
 
             <?php
             if (isset($_POST)) {
