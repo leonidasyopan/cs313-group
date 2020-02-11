@@ -41,7 +41,7 @@ catch (PDOException $ex)
             <input type="text" name="chapter" id="chapter" placeholder="Chapter"> <br>
             <input type="text" name="verse" id="verse" placeholder="Verse"> <br>
             <textarea id="content" rows="4" cols="50" placeholder="Write content here..."></textarea> <br>        
-            
+            <p>Topics:</p>
             <?php
             foreach ($db->query('SELECT DISTINCT name FROM topics') as $row) {                
                 echo '<input type="checkbox" name="topics[]" value="'. $row['name'] . '" >' . $row['name'] . '</br>';
