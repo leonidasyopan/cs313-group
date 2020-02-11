@@ -84,8 +84,7 @@ catch (PDOException $ex)
                 for($i = 0; $i < count($_POST['topics']); $i++) {
 
                     echo 'inserting' . $_POST['topics'][$i] . '...';
-                    $stmt = $db->prepare ("INSERT INTO lookup (scriptures_id, topics_id) VALUES (:scriptures_id, :topics_id)");
-                    $stmt->bindValue("lookup", $scriptures_id, $topics_id);
+                    $stmt = $db->prepare ("INSERT INTO lookup (scriptures_id, topics_id) VALUES (:scriptures_id, :topics_id);");
                     $stmt->execute(array('scriptures_id' => $newID, 'topics_id' => $_POST['topics'][$i]));
                 }
 
