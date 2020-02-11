@@ -84,6 +84,23 @@ catch (PDOException $ex)
                 for ($i = 0; $i < count($_POST['topics']); $i++) {
 
                     echo 'inserting ' . $_POST['topics'][$i] . '...';
+                    $stmt = $db->prepare("INSERT INTO lookup (scriptures_id, topics_id) VALUES (:scriptures_id, :topics_id);");
+                    $stmt->bindValue(':scriptures_id', $newID, PDO::PARAM_INT);
+                    $stmt->bindValue(':topics_id', $_POST['topics'][$i], PDO::PARAM_INT);
+                    $stmt->execute();
+                    echo 'finished for loop';
+                
+                $stmt->execute();
+
+                echo '<p>' . $result . '</p>';
+
+                $newID = $db->query("SELECT max(scriptures_id) FROM scriptures");
+
+
+                
+                for ($i = 0; $i < count($_POST['topics']); $i++) {
+
+                    echo 'inserting ' . $_POST['topics'][$i] . '...';
                     $stmt = $db->prepare ("INSERT INTO lookup (scriptures_id, topics_id) VALUES (:scriptures_id, :topics_id);");
                     $stmt->bindValue(':scriptures_id', $scriptures_id, PDO::PARAM_INT);
                     $stmt->bindValue(':topics_id', $_POST['topics'][$i], PDO::PARAM_INT);
@@ -93,4 +110,3 @@ catch (PDOException $ex)
 
             }
         ?>
-
