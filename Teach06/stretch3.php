@@ -52,7 +52,7 @@ catch (PDOException $ex)
             ?>
             </div>
             <input type="checkbox" name="newTopic" value="1" id="newTopic"> <input type="text" name="topic" id="topic" placeholder="other"><br>
-            <button onclick="submit()">Submit</button>
+            <button onclick="submitForm()">Submit</button>
         </form>
 
             <?php

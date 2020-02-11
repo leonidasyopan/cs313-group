@@ -1,4 +1,4 @@
-function submit() {
+function submitForm() {
     var book = document.getElementById('book').value,
         chapter = document.getElementById('chapter').value,
         verse = document.getElementById('verse').value,
