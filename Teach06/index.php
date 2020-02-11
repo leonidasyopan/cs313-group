@@ -51,34 +51,7 @@ catch (PDOException $ex)
             <input type="submit">
         </form>
         
-        
-            <table>
-                <tr>
-                    <th>Topic</th>
-                    <th>Reference</th>
-                    <th>Content</th>
-                </tr>
-        
-            <?php
-            foreach ($db->query("SELECT l.lookup_id
-            ,       s.book
-            ,       s.chapter
-            ,       s.verse
-            ,       s.content
-            ,       t.name
-            FROM scriptures s
-            INNER JOIN lookup l ON l.scriptures_id = s.scriptures_id
-            INNER JOIN topics t ON t.topics_id = l.topics_id;") as $row) {                
-                
-                echo '<tr>' .
-                    '<td>'. $row['name'] . '</td>' .
-                    '<td>'. $row['book'] . ' ' . $row['chapter'] . ':'  . $row['verse'] . '</td>' .                
-                    '<td>'. $row['content'] . '</td>' .
-                '</tr>';
-                
-            }
-            ?>
-            </table>
+    
 
             <?php
             if (isset($_POST)) {
@@ -123,5 +96,33 @@ catch (PDOException $ex)
         }
         ?>
 
-    </body>
-</html>
+            <table>
+                            <tr>
+                                <th>Topic</th>
+                                <th>Reference</th>
+                                <th>Content</th>
+                            </tr>
+                    
+                        <?php
+                        foreach ($db->query("SELECT l.lookup_id
+                        ,       s.book
+                        ,       s.chapter
+                        ,       s.verse
+                        ,       s.content
+                        ,       t.name
+                        FROM scriptures s
+                        INNER JOIN lookup l ON l.scriptures_id = s.scriptures_id
+                        INNER JOIN topics t ON t.topics_id = l.topics_id;") as $row) {                
+                            
+                            echo '<tr>' .
+                                '<td>'. $row['name'] . '</td>' .
+                                '<td>'. $row['book'] . ' ' . $row['chapter'] . ':'  . $row['verse'] . '</td>' .                
+                                '<td>'. $row['content'] . '</td>' .
+                            '</tr>';
+                            
+                        }
+                        ?>
+                        </table>
+
+                </body>
+            </html>
