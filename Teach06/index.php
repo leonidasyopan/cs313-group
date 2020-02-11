@@ -37,15 +37,14 @@ catch (PDOException $ex)
     <h1>Scripture Resource</h1>
 
         <form action="scriptures.php" method="post">
-            <input type="text" name="book">
             <label for="book">Book</label>
-            <input type="text" name="chapter">
+            <input type="text" name="book" id="book"><br>
             <label for="chapter">Chapter</label>
-            <input type="text" name="verse">
+            <input type="text" name="chapter" id="chapter"> <br>
             <label for="verse">Verse</label>
-            <input type="textarea" name="content">
-            <label for="content">Content</label>
-            <br>
+            <input type="text" name="verse" id="verse"> <br>
+            <label for="content">Content</label> 
+            <textarea id="content" rows="4" cols="50" placeholder="Write content here..."></textarea> <br>        
             
             <?php
             foreach ($db->query('SELECT DISTINCT name FROM topics') as $row) {                
