@@ -51,13 +51,11 @@ catch (PDOException $ex)
             <input type="checkbox" name="newTopic" value="1"> <input type="text" name="topic" id="topic" placeholder="other"><br>
             <input type="submit">
         </form>
-        
-        <!-- if (isset($_POST['checkbox'])) {
-            // checkbox has been checked
-            } -->
 
             <?php
             if (isset($_POST)) {
+
+                
 
                 // echo '<p>post is set!</p>';
 
@@ -69,6 +67,17 @@ catch (PDOException $ex)
                 //echo '<p>Verse: ' . $verse . '</p>';
                 $content = htmlspecialchars($_POST[content]);
                 //echo '<p>Content: ' . $content . '</p>';    
+                $topics = $_POST['topics'];
+
+
+                if (isset($_POST['newTopic'])) {
+                    $newTopic = htmlspecialchars($_POST['topic']);
+                    $stmt = $db->prepare("INSERT INTO topics (name) VALUES :name");
+                    $stmt->bindValue(':name', $newTopic, PDO::PARAM_STR);
+                    $stmt->execute();
+
+                    $topics->push($db->lastInsertId("topics_topics_id_seq"));
+                    }
                 
                 //echo '<pre>'; print_r($_POST['topics']); echo '</pre>';
                 
@@ -86,12 +95,12 @@ catch (PDOException $ex)
                 //echo '<p>scriptureId: ' . $scriptureId . '</p>';
                 
 
-                for ($i = 0; $i < count($_POST['topics']); $i++) {
+                for ($i = 0; $i < count($topics); $i++) {
 
                     //echo '<p>inserting ' . $_POST['topics'][$i] . '...</p>';
                     $stmt = $db->prepare("INSERT INTO lookup (scriptures_id, topics_id) VALUES (:scriptures_id, :topics_id);");
                     $stmt->bindValue(':scriptures_id', $scriptureId, PDO::PARAM_INT);
-                    $stmt->bindValue(':topics_id', $_POST['topics'][$i], PDO::PARAM_INT);
+                    $stmt->bindValue(':topics_id', $topics[$i], PDO::PARAM_INT);
                     $stmt->execute();
                     //echo 'finished for loop';
 
