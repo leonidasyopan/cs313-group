@@ -77,7 +77,8 @@ catch (PDOException $ex)
 
                 echo '<p>' . $result . '</p>';
 
-                $newId = $db->lastInsertId('scriptures_id_seq');
+                $scriptureId = $db->lastInsertId("scriptures_scriptures_id_seq");
+                echo '<p>scriptureId: ' . $scriptureId . '</p>';
                 
                 /*
                 INSERT INTO table_name [ (column1 [, column2 ]) ]
@@ -90,7 +91,7 @@ catch (PDOException $ex)
 
                     echo '<p>inserting ' . $_POST['topics'][$i] . '...</p>';
                     $stmt = $db->prepare("INSERT INTO lookup (scriptures_id, topics_id) VALUES (:scriptures_id, :topics_id);");
-                    $stmt->bindValue(':scriptures_id', $newID, PDO::PARAM_INT);
+                    $stmt->bindValue(':scriptures_id', $scriptureId, PDO::PARAM_INT);
                     $stmt->bindValue(':topics_id', $_POST['topics'][$i], PDO::PARAM_INT);
                     $stmt->execute();
                     echo 'finished for loop';
