@@ -36,20 +36,45 @@ catch (PDOException $ex)
 <body>
     <h1>Scripture Resource</h1>
 
-        <form action="scriptures.php" method="post">
+        <form action="index.php" method="post">
             <input type="text" name="book" id="book" placeholder="Book"><br>
             <input type="text" name="chapter" id="chapter" placeholder="Chapter"> <br>
             <input type="text" name="verse" id="verse" placeholder="Verse"> <br>
             <textarea id="content" rows="4" cols="50" placeholder="Write content here..."></textarea> <br>        
             <p>Topics:</p>
             <?php
-            foreach ($db->query('SELECT DISTINCT name FROM topics') as $row) {                
-                echo '<input type="checkbox" name="topics[]" value="'. $row['name'] . '" >' . $row['name'] . '</br>';
+
+            foreach ($db->query('SELECT DISTINCT * FROM topics') as $row) {                
+                echo '<input type="checkbox" name="topics[]" value="'. $row['topics_id'] . '" >' . $row['name'] . '</br>';
             }
             ?>
             <input type="submit">
         </form>
         
-        
-</body>
-</html>
+        <?php
+            if (isset($_POST)) {
+
+                $book = htmlspecialchars($_POST[book]);
+                $chapter = htmlspecialchars($_POST[chapter]);
+                $verse = htmlspecialchars($_POST[verse]);
+                $content = htmlspecialchars($_POST[content]);                
+                
+                $stmt = $db->prepare("INSERT INTO scriptures (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content");
+                
+                $stmt->execute(array('book' => $book, 'chapter' => $chapter, 'verse' => $verse, 'content' => $content));
+
+                $newID = $db->query("SELECT max(scriptures_id) FROM scriptures");
+
+
+                
+                for($i = 0; $i < count($_POST['topics']); $i++) {
+
+                    echo 'inserting' . $_POST['topics'] . '...';
+                    $stmt = $db->prepare ("INSERT INTO lookup (scriptures_id, topics_id) VALUES (:scriptures_id, :topics_id)");
+
+                    $stmt->execute(array('scriptures_id' => $newID, 'topics_id' => $_POST['topics'][$i]));
+                }
+
+            }
+        ?>
+
