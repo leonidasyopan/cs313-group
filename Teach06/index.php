@@ -110,4 +110,8 @@ catch (PDOException $ex)
                 }
 
             }
+        }
         ?>
+
+    </body>
+</html>
