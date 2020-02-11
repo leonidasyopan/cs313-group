@@ -78,7 +78,9 @@ catch (PDOException $ex)
                     $stmt->bindValue(':name', $newTopic, PDO::PARAM_STR);
                     $stmt->execute();
                     echo '<p> Inserted </p>';
-                    $topics->push($db->lastInsertId("topics_topics_id_seq"));
+                    $value = $db->lastInsertId("topics_topics_id_seq");
+                    echo '<p>$value: ' . $value . '</p>';
+                    $topics->push($value);
                     }
                 
                 //echo '<pre>'; print_r($_POST['topics']); echo '</pre>';
