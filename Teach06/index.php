@@ -51,21 +51,50 @@ catch (PDOException $ex)
             <input type="submit">
         </form>
         
-        <?php
+        
+            <table>
+                <tr>
+                    <th>Topic</th>
+                    <th>Reference</th>
+                    <th>Content</th>
+                </tr>
+        
+            <?php
+            foreach ($db->query("SELECT l.lookup_id
+            ,       s.book
+            ,       s.chapter
+            ,       s.verse
+            ,       s.content
+            ,       t.name
+            FROM scriptures s
+            INNER JOIN lookup l ON l.scriptures_id = s.scriptures_id
+            INNER JOIN topics t ON t.topics_id = l.topics_id;") as $row) {                
+                
+                echo '<tr>' .
+                    '<td>'. $row['name'] . '</td>' .
+                    '<td>'. $row['book'] . ' ' . $row['chapter'] . ':'  . $row['verse'] . '</td>' .                
+                    '<td>'. $row['content'] . '</td>' .
+                '</tr>';
+                
+            }
+            ?>
+            </table>
+
+            <?php
             if (isset($_POST)) {
 
-                echo '<p>post is set!</p>';
+                // echo '<p>post is set!</p>';
 
                 $book = htmlspecialchars($_POST[book]);
-                echo '<p>Book: ' . $book . '</p>';
+                // echo '<p>Book: ' . $book . '</p>';
                 $chapter = htmlspecialchars($_POST[chapter]);
-                echo '<p>Chapter: ' . $chapter . '</p>';
+                //echo '<p>Chapter: ' . $chapter . '</p>';
                 $verse = htmlspecialchars($_POST[verse]);
-                echo '<p>Verse: ' . $verse . '</p>';
+                //echo '<p>Verse: ' . $verse . '</p>';
                 $content = htmlspecialchars($_POST[content]);
-                echo '<p>Content: ' . $content . '</p>';    
+                //echo '<p>Content: ' . $content . '</p>';    
                 
-                echo '<pre>'; print_r($_POST['topics']); echo '</pre>';
+                //echo '<pre>'; print_r($_POST['topics']); echo '</pre>';
                 
                 $stmt = $db->prepare("INSERT INTO scriptures (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content);");
                 $stmt->bindValue(':book', $book, PDO::PARAM_STR);
@@ -75,26 +104,20 @@ catch (PDOException $ex)
                 
                 $stmt->execute();
 
-                echo '<p>' . $result . '</p>';
+                //echo '<p>' . $result . '</p>';
 
                 $scriptureId = $db->lastInsertId("scriptures_scriptures_id_seq");
-                echo '<p>scriptureId: ' . $scriptureId . '</p>';
+                //echo '<p>scriptureId: ' . $scriptureId . '</p>';
                 
-                /*
-                INSERT INTO table_name [ (column1 [, column2 ]) ]
-                SELECT [ *|column1 [, column2 ]
-                FROM table1 [, table2 ]
-                [ WHERE VALUE OPERATOR ];
-                */
 
                 for ($i = 0; $i < count($_POST['topics']); $i++) {
 
-                    echo '<p>inserting ' . $_POST['topics'][$i] . '...</p>';
+                    //echo '<p>inserting ' . $_POST['topics'][$i] . '...</p>';
                     $stmt = $db->prepare("INSERT INTO lookup (scriptures_id, topics_id) VALUES (:scriptures_id, :topics_id);");
                     $stmt->bindValue(':scriptures_id', $scriptureId, PDO::PARAM_INT);
                     $stmt->bindValue(':topics_id', $_POST['topics'][$i], PDO::PARAM_INT);
                     $stmt->execute();
-                    echo 'finished for loop';
+                    //echo 'finished for loop';
 
             }
         }
