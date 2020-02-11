@@ -45,7 +45,7 @@ catch (PDOException $ex)
             <?php
 
             foreach ($db->query('SELECT DISTINCT * FROM topics') as $row) {                
-                echo '<input type="checkbox" name="topics[]" value="'. $row['topics_id'] . '" >' . $row['name'] . ' - ' . $row['id'] . '</br>';
+                echo '<input type="checkbox" name="topics[]" value="'. $row['topics_id'] . '" >' . $row['name'] . ' - ' . $row['topics_id'] . '</br>';
             }
             ?>
             <input type="checkbox" name="newTopic" value="1"> <input type="text" name="topic" id="topic" placeholder="other"><br>
@@ -71,8 +71,9 @@ catch (PDOException $ex)
 
 
                 if (isset($_POST['newTopic'])) {
+                    echo '<p> In If Statement </p>';
                     $newTopic = htmlspecialchars($_POST['topic']);
-                    $stmt = $db->prepare("INSERT INTO topics (name) VALUES :name");
+                    $stmt = $db->prepare("INSERT INTO topics (name) VALUES (:name);");
                     $stmt->bindValue(':name', $newTopic, PDO::PARAM_STR);
                     $stmt->execute();
 
