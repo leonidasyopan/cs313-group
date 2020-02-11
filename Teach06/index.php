@@ -37,13 +37,9 @@ catch (PDOException $ex)
     <h1>Scripture Resource</h1>
 
         <form action="scriptures.php" method="post">
-            <label for="book">Book</label>
-            <input type="text" name="book" id="book"><br>
-            <label for="chapter">Chapter</label>
-            <input type="text" name="chapter" id="chapter"> <br>
-            <label for="verse">Verse</label>
-            <input type="text" name="verse" id="verse"> <br>
-            <label for="content">Content</label> 
+            <input type="text" name="book" id="book" placeholder="Book"><br>
+            <input type="text" name="chapter" id="chapter" placeholder="Chapter"> <br>
+            <input type="text" name="verse" id="verse" placeholder="Verse"> <br>
             <textarea id="content" rows="4" cols="50" placeholder="Write content here..."></textarea> <br>        
             
             <?php
