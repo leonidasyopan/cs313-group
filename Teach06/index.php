@@ -40,7 +40,7 @@ catch (PDOException $ex)
             <input type="text" name="book" id="book" placeholder="Book"><br>
             <input type="text" name="chapter" id="chapter" placeholder="Chapter"> <br>
             <input type="text" name="verse" id="verse" placeholder="Verse"> <br>
-            <textarea id="content" rows="4" cols="50" placeholder="Write content here..."></textarea> <br>        
+            <input type="text" name="content" id="content" placeholder="Content"> <br>        
             <p>Topics:</p>
             <?php
 
@@ -63,7 +63,9 @@ catch (PDOException $ex)
                 $verse = htmlspecialchars($_POST[verse]);
                 echo '<p>Verse: ' . $verse . '</p>';
                 $content = htmlspecialchars($_POST[content]);
-                echo '<p>Content: ' . $content . '</p>';                
+                echo '<p>Content: ' . $content . '</p>';    
+                
+                echo '<pre>'; print_r($_POST['topics']); echo '</pre>';
                 
                 $stmt = $db->prepare("INSERT INTO scriptures (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content");
                 
