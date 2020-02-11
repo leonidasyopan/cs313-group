@@ -72,13 +72,15 @@ catch (PDOException $ex)
                 $stmt->execute(array(':book' => $book, ':chapter' => $chapter, ':verse' => $verse, ':content' => $content));
                 $result = $stmt->fetchAll();
 
+                echo '<p>' . $result . '</p>';
+
                 $newID = $db->query("SELECT max(scriptures_id) FROM scriptures");
 
 
                 
                 for($i = 0; $i < count($_POST['topics']); $i++) {
 
-                    echo 'inserting' . $_POST['topics'] . '...';
+                    echo 'inserting' . $_POST['topics'][$i] . '...';
                     $stmt = $db->prepare ("INSERT INTO lookup (scriptures_id, topics_id) VALUES (:scriptures_id, :topics_id)");
 
                     $stmt->execute(array('scriptures_id' => $newID, 'topics_id' => $_POST['topics'][$i]));
