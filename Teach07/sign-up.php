@@ -1,11 +1,13 @@
 <?php
 session_start();
-require_once("connect.php");
 
-if($_SESSION["logged-in"] == true) {
+
+if($_SESSION["loggedin"] == true) {
     header('Location: ' . 'welcome.php');
     die();
 }
+
+require_once("connect.php");
 
 $password_err = $confirm_err = $username_err = " ";
 
