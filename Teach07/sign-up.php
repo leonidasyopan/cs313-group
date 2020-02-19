@@ -98,6 +98,11 @@ if (!empty($_POST)) {
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <title>Sign-Up</title>
 
+    <style>
+    .error {
+        color: red;
+    }
+    </style>
     <script>
 
         function validatePassword() {
@@ -131,10 +136,10 @@ if (!empty($_POST)) {
         <p class="error"><?php echo $username_err; ?></p>
         
         <label for="password">Password:</label>
-        <input type="password" name="password" placeholder="password" id="password">
+        <input type="password" name="password" placeholder="password" id="password" onblur="validatePassword()">
         <p  id="password_err" class="error"><?php echo $password_err; ?></p>
         <label for="password">Confirm Password:</label>
-        <input type="password" name="confirm-password" placeholder="password" id="confirm-password" onblur="validatePassword()">
+        <input type="password" name="confirm-password" placeholder="password" id="confirm-password">
         <p class="error"><?php echo $confirm_err; ?></p>
         
         <input type="submit" value="Submit">
