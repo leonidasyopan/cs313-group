@@ -65,13 +65,20 @@ if (!empty($_POST)) {
     if (empty(trim($username_err)) && empty(trim($password_err)) && empty(trim($confirm_err)))
     {
 
-        $newPassword = password_hash($_POST["password"]);
+        $newPassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
         //Create new user in database
         $sql = $db->prepare("INSERT into user_accounts (username, password, user_create_date) VALUES (:username, :password, current_timestamp)");
         $sql->bindParam(":username", $newUsername);
         $sql->bindParam(":password", $newPassword);
-        $sql->execute();
+
+        // Attempt to execute the prepared statement
+        if($sql->execute()){
+            // Redirect to login page
+            header("location: login.php");
+        } else{
+            echo "Something went wrong. Please try again later.";
+        }
     
     }
     
