@@ -13,7 +13,7 @@ require_once "connect.php";
 
 
 
-$sql = 'SELECT * FROM user_accounts WHERE user_id = 3';
+$sql = 'SELECT * FROM user_accounts WHERE user_id =' . $_SESSION["id"];
         $row = $db->query($sql)->fetch();
 
         $welcome = "Welcome, " . $row["username"];
