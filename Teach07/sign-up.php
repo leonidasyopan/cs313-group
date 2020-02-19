@@ -9,9 +9,10 @@ if($_SESSION["logged-in"] == true) {
 
 $password_err = $confirm_err = $username_err = " ";
 
-if (isset($_POST)) {
 
-    if(isset($_POST["username"]))
+if (!empty($_POST)) {
+
+    if(!empty(trim(($_POST["username"]))))
     {
         //validate username
         $newUsername = $_POST["username"];
@@ -35,7 +36,7 @@ if (isset($_POST)) {
         $username_err = "Please enter a username.";
     }
 
-    if(isset($_POST["password"])) {
+    if(!empty(trim(($_POST["password"])))) {
         //validate password
         if (trim(strlen($_POST["password"])) < 6)
             $password_err = "Your Password Must be at least 6 characters long";
@@ -44,7 +45,7 @@ if (isset($_POST)) {
         $password_err = "Please Enter A Password.";
     }
 
-    if (isset($_POST["confirm-password"])) {
+    if (!empty(trim(($_POST["confirm-password"])))) {
         if (strlen($_POST["confirm-password"]) < 6)
             $password_err = "Your Password Must be at least 6 characters long";
     }
@@ -92,11 +93,14 @@ if (isset($_POST)) {
         <input type="text" name="username" placeholder="username" id="username">
         <p class="error"><?php echo $username_err; ?></p>
         
-        <label for="password">Password</label>
+        <label for="password">Password:</label>
         <input type="password" name="password" placeholder="password" id="password">
         <p class="error"><?php echo $password_err; ?></p>
+        <label for="password">Confirm Password:</label>
         <input type="password" name="confirm-password" placeholder="password" id="confirm-password">
         <p class="error"><?php echo $confirm_err; ?></p>
+        
+        <input type="submit" value="Submit">
 
 
     </form>
