@@ -62,7 +62,7 @@ if (!empty($_POST)) {
         }
     }
 
-    if (empty($username_err) && empty($password_err) && empty($confirm_err))
+    if (empty(trim($username_err)) && empty(trim($password_err)) && empty(trim($confirm_err)))
     {
 
         $newPassword = password_hash($_POST["password"]);
