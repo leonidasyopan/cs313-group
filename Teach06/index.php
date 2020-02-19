@@ -81,6 +81,10 @@ catch (PDOException $ex)
                     $value = $db->lastInsertId("topics_topics_id_seq");
                     echo '<p>$value: ' . $value . '</p>';
                     array_push($topics, $value);
+                    echo '<p> Inserted </p>';
+                    $value = $db->lastInsertId("topics_topics_id_seq");
+                    echo '<p>$value: ' . $value . '</p>';
+                    array_push($topics, $value);
                     }
                 
                 //echo '<pre>'; print_r($_POST['topics']); echo '</pre>';
