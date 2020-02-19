@@ -97,6 +97,31 @@ if (!empty($_POST)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <title>Sign-Up</title>
+
+    <script>
+
+        function validatePassword() {
+        var password, password_err;
+
+        // Get the value of the input field with id="numb"
+        username = document.getElementById("username").value;
+        password = document.getElementById("password").value;
+        confirmPassword = document.getElementById("confirm-password").value;
+
+        // If x is Not a Number or less than one or greater than 10
+        if (password.length < 6) {
+            password_err = "Password must be longer than 6 characters"
+        } 
+        else if (!(/\d/.test(password))) {
+            password_err = "Password must contain a number"
+        }
+        else {
+            password_err = "";
+        }
+
+        document.getElementById("password_err").innerHTML = password_err;
+        }
+    </script>
 </head>
 <body>
 
@@ -107,9 +132,9 @@ if (!empty($_POST)) {
         
         <label for="password">Password:</label>
         <input type="password" name="password" placeholder="password" id="password">
-        <p class="error"><?php echo $password_err; ?></p>
+        <p  id="password_err" class="error"><?php echo $password_err; ?></p>
         <label for="password">Confirm Password:</label>
-        <input type="password" name="confirm-password" placeholder="password" id="confirm-password">
+        <input type="password" name="confirm-password" placeholder="password" id="confirm-password" onblur="validatePassword()">
         <p class="error"><?php echo $confirm_err; ?></p>
         
         <input type="submit" value="Submit">
