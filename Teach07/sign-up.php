@@ -41,6 +41,10 @@ if (!empty($_POST)) {
         //validate password
         if (trim(strlen($_POST["password"])) < 6)
             $password_err = "Your Password Must be at least 6 characters long";
+
+        if (!preg_match('~[0-9]+~', $_POST["password"])) {
+            $password_err = "Your Password Must contain a number";
+            }
     }
     else {
         $password_err = "Please Enter A Password.";
