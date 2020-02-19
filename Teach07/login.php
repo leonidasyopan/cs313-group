@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT user_account_id, username, password FROM user_accounts WHERE username = :username";
+        $sql = "SELECT user_id, username, password FROM user_accounts WHERE username = :username";
         
         if($stmt = $db->prepare($sql)){
             // Bind variables to the prepared statement as parameters
