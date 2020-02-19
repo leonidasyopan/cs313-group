@@ -19,7 +19,6 @@ if (!empty($_POST)) {
 
         $sql = $db->prepare("SELECT username FROM user_accounts WHERE username = :username");
         $sql->bindParam(":username", $newUsername);
-        $someUsername = $db->execute();
 
         if($sql->execute()){
             if($sql->rowCount() == 1){
