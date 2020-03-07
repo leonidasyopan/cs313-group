@@ -17,9 +17,10 @@ const process = (firstNumber, secondNumber, operator) => {
             console.log("Error: No operator selected");
         }
 
+        let resultDiv = document.querySelector("#display-results")
+
         console.log(result);
         return result;
-
 }
 
 exports.process = process;
