@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Application</title>
+    <script src="/javascript/functions.js"></script>
+</head>
+<body>
+    <h1>Teach09 - Node JS Form Handeling</h1>
+    <form  method="get" action="/process">
+        <fieldset>
+            <legend>Choose your math operation:</legend>
+            <input type="text" id="firstNumber" name="firstNumber">   
+            <select id="operator" name="operator">
+                <option value="addition">+</option>
+                <option value="subtraction">-</option>
+                <option value="multiplication">*</option>
+                <option value="division">/</option>
+            </select>        
+            <input type="text" id="secondNumber" name="secondNumber">
+            
+            
+            <input type="submit" value="Compute">
+            
+            
+    
+        </fieldset>
+    </form>
+    <button onclick="getResult()">AJAX</button>
+    <div id="result">0</div>
+</body>
+</html>
