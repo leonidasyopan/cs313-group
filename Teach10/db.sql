@@ -14,9 +14,6 @@ SELECT * FROM person;
 CREATE TABLE children (
     child_id            SERIAL         PRIMARY KEY      NOT NULL,
     parent_id	        INTEGER	     		            NOT NULL,
-    first_name 		    VARCHAR(100),
-    last_name 		    VARCHAR(100),
-    date_of_birth	    DATE,
 CONSTRAINT children_fk_1    FOREIGN KEY(parent_id)      REFERENCES person(person_id)
 );
 

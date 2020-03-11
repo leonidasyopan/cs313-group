@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Person</title>
+    <script>
+        function getPerson() {
+            console.log("in function");
+            let id = document.getElementById("person").value;
+            let ajax = new XMLHttpRequest();
+            ajax.open('GET', '/getPerson?id=' + id, true);
+
+            ajax.onreadystatechange = function() {
+                if (ajax.readyState === 4 && ajax.status == 200) {
+                    try {
+                        var data = JSON.parse(ajax.responseText);
+                    }
+                    catch(err) {
+                        console.log(err.message);
+                    }
+                    document.getElementById("personDetails").innerHTML = JSON.stringify(data);
+
+                }
+            }
+            ajax.send();
+        }
+
+        function getParents() {
+            console.log("in function");
+            let id = document.getElementById("person").value;
+            let ajax = new XMLHttpRequest();
+            ajax.open('GET', '/getParents?id=' + id, true);
+
+            ajax.onreadystatechange = function() {
+                if (ajax.readyState === 4 && ajax.status == 200) {
+                    try {
+                        var data = JSON.parse(ajax.responseText);
+                    }
+                    catch(err) {
+                        console.log(err.message);
+                    }
+                    document.getElementById("personDetails").innerHTML = JSON.stringify(data);
+
+                }
+            }
+            ajax.send();
+        }
+
+        function getChildren() {
+            console.log("in function");
+            let id = document.getElementById("person").value;
+            let ajax = new XMLHttpRequest();
+            ajax.open('GET', '/getChildren?id=' + id, true);
+
+            ajax.onreadystatechange = function() {
+                if (ajax.readyState === 4 && ajax.status == 200) {
+                    try {
+                        var data = JSON.parse(ajax.responseText);
+                    }
+                    catch(err) {
+                        console.log(err.message);
+                    }
+                    document.getElementById("personDetails").innerHTML = JSON.stringify(data);
+
+                }
+            }
+            ajax.send();
+        }
+    </script>
+</head>
+<body>
+    <h1>Get Person</h1>
+    
+    <label for="person"></label>
+    <input type="text" name="person" id="person">
+
+    <input type="submit" value="Get Details" onclick="getPerson()">
+    <div id="personDetails"></div>
+    
+</body>    
+</html>
