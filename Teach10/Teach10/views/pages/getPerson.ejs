@@ -40,7 +40,7 @@
                     catch(err) {
                         console.log(err.message);
                     }
-                    document.getElementById("personDetails").innerHTML = JSON.stringify(data);
+                    document.getElementById("personDetails").innerHTML += JSON.stringify(data);
 
                 }
             }
@@ -61,7 +61,7 @@
                     catch(err) {
                         console.log(err.message);
                     }
-                    document.getElementById("personDetails").innerHTML = JSON.stringify(data);
+                    document.getElementById("personDetails").innerHTML += JSON.stringify(data);
 
                 }
             }
@@ -76,6 +76,8 @@
     <input type="text" name="person" id="person">
 
     <input type="submit" value="Get Details" onclick="getPerson()">
+    <input type="submit" value="Get Parents" onclick="getParents()">
+    <input type="submit" value="Get Children" onclick="getChildren()">
     <div id="personDetails"></div>
     
 </body>    
