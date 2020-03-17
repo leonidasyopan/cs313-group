@@ -29,7 +29,7 @@ function getAJAX(url) {
 
     //Start AJAX
     var ajax = new XMLHttpRequest();
-    ajax.open('GET', url, true);
+    ajax.open('GET', url, false);
 
     //Send the proper header information along with the request
     //ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
