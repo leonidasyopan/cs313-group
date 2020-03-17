@@ -2,11 +2,26 @@ function movieSearch() {
     const apiKey = "b4d7e28f";
 
     var movieTitle = document.getElementById('searchBox').value,
-        url = "https://www.omdbapi.com/?t=" + movieTitle + "&apikey=" + apiKey;
+        url = "https://www.omdbapi.com/?s=" + movieTitle + "&apikey=" + apiKey;
 
     var movieData = getAJAX(url);
 
     console.log(movieData);
+
+    for (let i = 0; i < movieData.length; i++) {
+
+
+
+        let output = document.createElement("div");
+        output.innerHTML = movieData[i].title;
+        output.classList.add("movieSearchResult");
+
+        let searchResults = document.getElementById("searchResults");
+        searchResults.appendChild(output);
+
+
+
+    }
 
 
 }
@@ -25,11 +40,10 @@ function getAJAX(url) {
             console.log(ajax.responseText);
             try {
                 var object = JSON.parse(ajax.responseText)
+                return object;
             } catch (err) {
                 console.log(err.message + "in" + ajax.responseText)
             }
-
-            return object;
 
         }
     }
