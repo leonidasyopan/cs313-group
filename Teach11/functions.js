@@ -4,11 +4,6 @@ function movieSearch() {
     var movieTitle = document.getElementById('searchBox').value,
         url = "https://www.omdbapi.com/?s=" + movieTitle + "&apikey=" + apiKey;
 
-    getAJAX(url);
-
-}
-
-function getAJAX(url) {
 
     //Start AJAX
     var ajax = new XMLHttpRequest();
@@ -23,18 +18,19 @@ function getAJAX(url) {
             try {
                 console.log(ajax.responseText);
                 let movieData = JSON.parse(ajax.responseText);
+                var output;
                 for (let i = 0; i < movieData.Search.length; i++) {
 
-                    let output = document.createElement("li");
+                    let element = document.createElement("li");
                     output.innerHTML = movieData.Search[i].Title;
                     output.classList.add("movieSearchResult");
 
-                    let searchResults = document.getElementById("searchResults");
-                    searchResults.appendChild(output);
+                    
+                    output.appendChild(element);
 
                 }
+                document.getElementById("searchResults").appendChild(output);
 
-                return ajax.responseText;
             } catch (err) {
                 console.log(err.message + "in" + ajax.responseText)
             }
