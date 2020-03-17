@@ -63,24 +63,23 @@ function movieDetails(id) {
                 let movieDetails = JSON.parse(ajax.responseText);
                 
                 target = document.getElementById("movieDetailDiv");
-        
 
-                    target.innerHTML = "Title: " + movieDetails.Title + "<br>"; 
-                    target.innerHTML += "Poster: " + movieDetails.Poster + "<br>"; 
-                    target.innerHTML += "Year: " + movieDetails.Year + "<br>";                  
-                    target.innerHTML += "Genre: " + movieDetails.Genre + "<br>";
-                    target.innerHTML += "Director: " + movieDetails.Director + "<br>";
-                    target.innerHTML += "Writer: " + movieDetails.Writer + "<br>";
-                    target.innerHTML += "Runtime: " + movieDetails.Runtime + "<br>";
-                    target.innerHTML += "Released: " + movieDetails.Released + "<br>";
-                    target.innerHTML += "Actors: " + movieDetails.Actors + "<br>";
-                    target.innerHTML += "Plot: " + movieDetails.Plot + "<br>";
-                    target.innerHTML += "Language: " + movieDetails.Language + "<br>";
-                    target.innerHTML += "Country: " + movieDetails.Country + "<br>";
-                    target.innerHTML += "Awards: " + movieDetails.Awards + "<br>";
-                    target.innerHTML += "Rating: " + movieDetails.Ratings.Source[0] + "<br>";
-                    target.innerHTML += "BoxOffice: " + movieDetails.BoxOffice + "<br>";
-                    target.innerHTML += "Production: " + movieDetails.Production + "<br>";
+                    target.innerHTML = "<p>Title: " + movieDetails.Title + "</p>"; 
+                    target.innerHTML += '<img  src=">' + movieDetails.Poster + '" alt="' + movieDetails.Title + ' Poster">'; 
+                    target.innerHTML += "<p>Year: " + movieDetails.Year + "</p>";                  
+                    target.innerHTML += "<p>Genre: " + movieDetails.Genre + "</p>";
+                    target.innerHTML += "<p>Director: " + movieDetails.Director + "</p>";
+                    target.innerHTML += "<p>Writer: " + movieDetails.Writer + "</p>";
+                    target.innerHTML += "<p>Runtime: " + movieDetails.Runtime + "</p>";
+                    target.innerHTML += "<p>Released: " + movieDetails.Released + "</p>";
+                    target.innerHTML += "<p>Actors: " + movieDetails.Actors + "</p>";
+                    target.innerHTML += "<p>Plot: " + movieDetails.Plot + "</p>";
+                    target.innerHTML += "<p>Language: " + movieDetails.Language + "</p>";
+                    target.innerHTML += "<p>Country: " + movieDetails.Country + "</p>";
+                    target.innerHTML += "<p>Awards: " + movieDetails.Awards + "</p>";
+                    target.innerHTML += "<p>Rating: " + movieDetails.Ratings.Source[0] + "</p>";
+                    target.innerHTML += "<p>BoxOffice: " + movieDetails.BoxOffice + "</p>";
+                    target.innerHTML += "<p>Production: " + movieDetails.Production + "</p>";
                 
 
             } catch (err) {
