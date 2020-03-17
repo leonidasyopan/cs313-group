@@ -18,18 +18,19 @@ function movieSearch() {
             try {
                 console.log(ajax.responseText);
                 let movieData = JSON.parse(ajax.responseText);
-                var output;
+                
+                document.getElementById("searchResults").innerHTML = "";
                 for (let i = 0; i < movieData.Search.length; i++) {
 
-                    let element = document.createElement("li");
+                    let output = document.createElement("li");
                     output.innerHTML = movieData.Search[i].Title;
                     output.classList.add("movieSearchResult");
 
                     
-                    output.appendChild(element);
+                    document.getElementById("searchResults").appendChild(output);
 
                 }
-                document.getElementById("searchResults").appendChild(output);
+                
 
             } catch (err) {
                 console.log(err.message + "in" + ajax.responseText)
