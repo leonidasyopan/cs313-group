@@ -10,18 +10,7 @@ function movieSearch() {
 
     console.log(movieData);
 
-    for (let i = 0; i < movieData.length; i++) {
 
-
-
-        let output = document.createElement("li");
-        output.innerHTML = movieData[i].title;
-        output.classList.add("movieSearchResult");
-
-        let searchResults = document.getElementById("searchResults");
-        searchResults.appendChild(output);
-
-    }
 
 }
 
@@ -39,6 +28,20 @@ function getAJAX(url) {
 
             try {
                 console.log(ajax.responseText);
+                let movieData = JSON.parse(ajax.responseText);
+                for (let i = 0; i < movieData.length; i++) {
+
+
+
+                    let output = document.createElement("li");
+                    output.innerHTML = movieData[i].title;
+                    output.classList.add("movieSearchResult");
+
+                    let searchResults = document.getElementById("searchResults");
+                    searchResults.appendChild(output);
+
+                }
+
                 return ajax.responseText;
             } catch (err) {
                 console.log(err.message + "in" + ajax.responseText)
