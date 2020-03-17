@@ -23,12 +23,10 @@ function getAJAX(url) {
             try {
                 console.log(ajax.responseText);
                 let movieData = JSON.parse(ajax.responseText);
-                for (let i = 0; i < movieData.length; i++) {
-
-
+                for (let i = 0; i < movieData.Search.length; i++) {
 
                     let output = document.createElement("li");
-                    output.innerHTML = movieData[i].title;
+                    output.innerHTML = movieData.Search[i].Title;
                     output.classList.add("movieSearchResult");
 
                     let searchResults = document.getElementById("searchResults");
