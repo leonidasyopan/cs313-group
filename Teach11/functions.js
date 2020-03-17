@@ -4,7 +4,9 @@ function movieSearch() {
     var movieTitle = document.getElementById('searchBox').value,
         url = "https://www.omdbapi.com/?s=" + movieTitle + "&apikey=" + apiKey;
 
-    var movieData = JSON.parse(getAJAX(url));
+    var movieData = getAJAX(url);
+    console.log(movieData);
+    movieData = JSON.parse(movieData);
 
     console.log(movieData);
 
