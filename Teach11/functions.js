@@ -2,7 +2,7 @@ function movieSearch() {
     const apiKey = "b4d7e28f";
 
     var movieTitle = document.getElementById('searchBox').value,
-        url = "http://www.omdbapi.com/?apikey=" + apiKey + "&s" + movieTitle;
+        url = "https://www.omdbapi.com/?apikey=" + apiKey + "&s" + movieTitle;
 
     var movieData = getAJAX(url);
 
