@@ -65,7 +65,7 @@ function movieDetails(id) {
                 target = document.getElementById("movieDetailDiv");
 
                     target.innerHTML = "<p>Title: " + movieDetails.Title + "</p>"; 
-                    target.innerHTML += '<img  src=">' + movieDetails.Poster + '" alt="' + movieDetails.Title + ' Poster">'; 
+                    target.innerHTML += '<img src="' + movieDetails.Poster + '" alt="' + movieDetails.Title + ' Poster">'; 
                     target.innerHTML += "<p>Year: " + movieDetails.Year + "</p>";                  
                     target.innerHTML += "<p>Genre: " + movieDetails.Genre + "</p>";
                     target.innerHTML += "<p>Director: " + movieDetails.Director + "</p>";
