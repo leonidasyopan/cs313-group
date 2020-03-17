@@ -4,7 +4,7 @@ function movieSearch() {
     var movieTitle = document.getElementById('searchBox').value,
         url = "https://www.omdbapi.com/?s=" + movieTitle + "&apikey=" + apiKey;
 
-    var movieData = getAJAX(url);
+    var movieData = JSON.parse(getAJAX(url));
 
     console.log(movieData);
 
@@ -19,10 +19,7 @@ function movieSearch() {
         let searchResults = document.getElementById("searchResults");
         searchResults.appendChild(output);
 
-
-
     }
-
 
 }
 
@@ -39,8 +36,7 @@ function getAJAX(url) {
         if (ajax.readyState == 4 && ajax.status == 200) {
             console.log(ajax.responseText);
             try {
-                var object = JSON.parse(ajax.responseText)
-                return object;
+                return ajax.responseText;
             } catch (err) {
                 console.log(err.message + "in" + ajax.responseText)
             }
