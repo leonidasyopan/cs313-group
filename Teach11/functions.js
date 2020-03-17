@@ -25,7 +25,7 @@ function movieSearch() {
                     let output = document.createElement("li");
                     output.innerHTML = movieData.Search[i].Title;
                     output.classList.add("movieSearchResult");
-                    output.addEventListener("click", movieDetails(movieData.Search.imbdID), false);
+                    output.setAttribute("onclick", 'movieDetails(' + movieData.Search.imbdID + ')');
 
                     
                     document.getElementById("searchResults").appendChild(output);
