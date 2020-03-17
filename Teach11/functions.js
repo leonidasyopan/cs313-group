@@ -12,7 +12,7 @@ function movieSearch() {
 
 
 
-        let output = document.createElement("div");
+        let output = document.createElement("li");
         output.innerHTML = movieData[i].title;
         output.classList.add("movieSearchResult");
 
@@ -34,8 +34,9 @@ function getAJAX(url) {
 
     ajax.onreadystatechange = function() { //Call a function when the state changes.
         if (ajax.readyState == 4 && ajax.status == 200) {
-            console.log(ajax.responseText);
+
             try {
+                console.log(ajax.responseText);
                 return ajax.responseText;
             } catch (err) {
                 console.log(err.message + "in" + ajax.responseText)
