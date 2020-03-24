@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS person CASCADE;
 DROP TABLE IF EXISTS children CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
 
 CREATE TABLE person (
     person_id          SERIAL         PRIMARY KEY      NOT NULL,
@@ -22,6 +23,30 @@ CONSTRAINT children_fk_1    FOREIGN KEY(parent_id)      REFERENCES person(person
 
 SELECT * FROM children;
 
+
+CREATE TABLE users (
+    user_id          SERIAL         PRIMARY KEY      NOT NULL,
+    username         VARCHAR(100),
+    password 		 VARCHAR(300)
+);
+
+SELECT * FROM users;
+
+INSERT INTO users (
+    username,
+    password
+) VALUES (
+    'leonidasyopan',
+    '101010'  
+);
+
+INSERT INTO users (
+    username,
+    password
+) VALUES (
+    'admin',
+    'password'  
+);
 
 /* POPULATING TABLES */
 
